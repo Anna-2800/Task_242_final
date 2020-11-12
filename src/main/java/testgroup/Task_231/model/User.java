@@ -22,8 +22,8 @@ public class User implements UserDetails {
     @Column(name = "password")
     private String password;
 
-//    @Transient
-//    private String passwordConfirm;
+    @Column(name = "progLanguage")
+    private String progLanguage;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"),
@@ -31,6 +31,14 @@ public class User implements UserDetails {
     private Set<Role> roles;
 
     public User() {
+    }
+
+    public String getProgLanguage(){
+        return progLanguage;
+    }
+
+    public void setProgLanguage(String progLanguage){
+        this.progLanguage= progLanguage;
     }
 
     public Long getId() {
@@ -84,14 +92,6 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-//    public String getPasswordConfirm() {
-//        return passwordConfirm;
-//    }
-//
-//    public void setPasswordConfirm(String passwordConfirm) {
-//        this.passwordConfirm = passwordConfirm;
-//    }
-
     public Set<Role> getRoles() {
         return roles;
     }
@@ -108,6 +108,6 @@ public class User implements UserDetails {
     @Override
     public String toString(){
         return "User " + this.getId() + "\n"
-                + this.getUsername() +"\n" + this.getRoles().toString();
+                + this.getUsername();
     }
 }

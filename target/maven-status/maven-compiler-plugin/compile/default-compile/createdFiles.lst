@@ -1,0 +1,17 @@
+testgroup\Task_231\config\HibernateConfig.class
+testgroup\Task_231\config\SpringSecurityInitializer.class
+testgroup\Task_231\controller\UsersController.class
+testgroup\Task_231\config\SecurityConfig.class
+testgroup\Task_231\dao\RoleDAO.class
+testgroup\Task_231\dao\UserDAOImpl.class
+testgroup\Task_231\service\RoleServiceImpl.class
+testgroup\Task_231\dao\RoleDAOImpl.class
+testgroup\Task_231\config\AppInitializer.class
+testgroup\Task_231\service\UserServiceImpl.class
+testgroup\Task_231\service\RoleService.class
+testgroup\Task_231\model\User.class
+testgroup\Task_231\service\UserService.class
+testgroup\Task_231\config\WebConfig.class
+testgroup\Task_231\dao\UserDAO.class
+testgroup\Task_231\model\Role.class
+testgroup\Task_231\config\handler\LoginSuccessHandler.class

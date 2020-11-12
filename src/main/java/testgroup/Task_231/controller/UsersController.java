@@ -1,6 +1,8 @@
 package testgroup.Task_231.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -66,7 +68,6 @@ public class UsersController {
     @RequestMapping(value = "/admin/users/{id}", method = RequestMethod.POST)
     public String editUser(@ModelAttribute("user") User user){
         userService.edit(user);
-        System.out.println("tut");
         return "redirect:/admin/users";
     }
 
@@ -92,4 +93,12 @@ public class UsersController {
         return "login";
     }
 
+
+    @RequestMapping("/user")
+    public String dashboardPageList(Model model, @AuthenticationPrincipal UserDetails currentUser ) {
+        User user = (User) userService.findUserByUsername(currentUser.getUsername());
+        model.addAttribute("user", user);
+
+        return "user";
+    }
 }

@@ -41,6 +41,7 @@ public class HibernateConfig {
         Properties properties = new Properties();
         properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
         properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
+        properties.put("hibernate.hbm2ddl.auto", environment.getRequiredProperty("hibernate.hbm2ddl.auto"));
         return properties;
     }
 
@@ -52,6 +53,7 @@ public class HibernateConfig {
         dataSource.setUrl(environment.getRequiredProperty("testbase.url"));
         dataSource.setUsername(environment.getRequiredProperty("testbase.username"));
         dataSource.setPassword(environment.getRequiredProperty("testbase.password"));
+
         return dataSource;
     }
 
