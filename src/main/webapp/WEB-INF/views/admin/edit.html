@@ -16,12 +16,18 @@
     <p/>
 <!--    <label for="age/">Enter age: </label>-->
 <!--    <input type="text" th:field="*{age}" id="age/">-->
-<!--    <p>-->
-<!--        <label for="programmingLanguage/">Enter programming language: </label>-->
-<!--        <input type="text" th:field="*{programmingLanguage}" id="programmingLanguage/">-->
+    <p>
+        <label for="progLanguage/">Enter programming language: </label>
+        <input type="text" th:field="*{progLanguage}" id="progLanguage/">
     <p>
         <input type="submit" value="Update"/>
     <p>
+
 </form>
+
+<form th:action="@{/logout}" method="post">
+    <button type="submit">Exit</button>
+</form>
+
 </body>
 </html>

@@ -108,6 +108,6 @@ public class User implements UserDetails {
     @Override
     public String toString(){
         return "User " + this.getId() + "\n"
-                + this.getUsername();
+                + this.getUsername()+"\n" + this.getProgLanguage();
     }
 }

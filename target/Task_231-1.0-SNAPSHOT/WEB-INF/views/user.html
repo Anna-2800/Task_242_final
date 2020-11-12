@@ -7,7 +7,14 @@
 <body>
 <p th:text="${user.getId()}">VALUE</p>
 <p th:text="${user.getUsername()}">VALUE</p>
+<p th:text="${user.getProgLanguage()}">VALUE</p>
+
 
 </form>
+
+<form th:action="@{/logout}" method="post">
+    <button type="submit">Exit</button>
+</form>
+
 </body>
 </html>
