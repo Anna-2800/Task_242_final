@@ -13,10 +13,11 @@ import testgroup.Task_231.service.RoleService;
 import testgroup.Task_231.service.UserService;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Controller
-//@RequestMapping("/users")
 public class UsersController {
 
     private UserService userService;
@@ -49,24 +50,36 @@ public class UsersController {
     @GetMapping("/admin/users/new")
     public String newUser(Model model){
         model.addAttribute("user", new User());
+        model.addAttribute("allRoles", roleService.listRoles());
         return "admin/new";
     }
 
     @PostMapping("admin/users/createNew")
-    public String create(@ModelAttribute("user") User user){
+    public String create(@ModelAttribute("user") User user, @RequestParam(value = "allRoles") String [] roles){
+        Set<Role> roleSet = new HashSet<>();
+        for (String role : roles){
+            roleSet.add(roleService.findRoleByName(role));
+        }
+        user.setRoles(roleSet);
         userService.add(user);
         return "redirect:/admin/users";
     }
 
     @GetMapping("/admin/users/{id}/edit")
     public String editPage(Model model, @PathVariable("id") long id){
-        User user = userService.getById(id);
-        model.addAttribute("user", user);
+        //User user = userService.getById(id);
+        model.addAttribute("allRoles", roleService.listRoles());
+        model.addAttribute("user", userService.getById(id));
         return "admin/edit";
     }
 
     @RequestMapping(value = "/admin/users/{id}", method = RequestMethod.POST)
-    public String editUser(@ModelAttribute("user") User user){
+    public String editUser(@ModelAttribute("user") User user, @RequestParam(value = "allRoles") String[] roles){
+        Set<Role> roleSet = new HashSet<>();
+        for(String role : roles){
+            roleSet.add(roleService.findRoleByName(role));
+        }
+        user.setRoles(roleSet);
         userService.edit(user);
         return "redirect:/admin/users";
     }

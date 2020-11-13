@@ -42,4 +42,9 @@ public class RoleServiceImpl implements RoleService {
     public Role getById(long id){
         return roleDAO.getById(id);
     }
+
+    @Transactional
+    public Role findRoleByName(String role){
+        return roleDAO.findRoleByName(role);
+    }
 }

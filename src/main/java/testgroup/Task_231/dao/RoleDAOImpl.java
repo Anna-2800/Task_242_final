@@ -35,4 +35,11 @@ public class RoleDAOImpl implements RoleDAO {
     public Role getById(long id) {
         return entityManager.find(Role.class, id);
     }
+
+    public Role findRoleByName(String role) {
+        return (Role) entityManager
+                .createQuery("select r from Role r where lower(r.role) like :role")
+                .setParameter("role", "%" + role.toLowerCase() + "%")
+                .getSingleResult();
+    }
 }

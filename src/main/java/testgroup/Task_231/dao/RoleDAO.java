@@ -17,5 +17,6 @@ public interface RoleDAO {
 
     Role getById(long id);
 
-    //User findByUsername(String username);
+    Role findRoleByName(String role);
+
 }

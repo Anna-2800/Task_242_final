@@ -15,5 +15,6 @@ public interface RoleService {
 
     Role getById(long id);
 
+    Role findRoleByName(String role);
     //User findByUsername(String username);
 }

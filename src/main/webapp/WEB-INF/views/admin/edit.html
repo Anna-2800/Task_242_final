@@ -14,14 +14,22 @@
     <label for="password/">Enter password: </label>
     <input type="text" th:field="*{password}" id="password/">
     <p/>
-<!--    <label for="age/">Enter age: </label>-->
-<!--    <input type="text" th:field="*{age}" id="age/">-->
     <p>
         <label for="progLanguage/">Enter programming language: </label>
         <input type="text" th:field="*{progLanguage}" id="progLanguage/">
     <p>
+    <br/>
+    <label>Roles:
+        <input type="checkbox" name="allRoles"
+               th:each="role : ${allRoles}"
+               th:text="${role.role}"
+               th:value="${role.role}"
+        />
+    </label>
+    <p>
         <input type="submit" value="Update"/>
     <p>
+
 
 </form>
 
